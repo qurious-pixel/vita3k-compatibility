@@ -13,7 +13,7 @@ jobs:
         $headers = @{
             Authorization = "Token ${{ secrets.GITHUB_TOKEN }}"
         }
-        $compat_link = "https://api.github.com/repos/Vita3K/compatibility"
+        $compat_link = "https://api.github.com/repos/qurious-pixel/vita3k-compatibility"
         $issues_link = $compat_link + "/issues"
         $date = (Invoke-RestMethod -Uri $issues_link"?sort=updated" -Headers $headers)[0].updated_at
         $open_issues_count = (Invoke-RestMethod -Uri "$compat_link" -Headers $headers).open_issues_count
@@ -57,7 +57,7 @@ jobs:
         $xml.Save("app_compat_db.xml")  
         "$issue_count issues have been retrieved from the compatibility database"
         
-        $upload_url = (Invoke-Restmethod -Uri https://api.github.com/repos/Vita3K/compatibility/releases/latest -Headers $headers).upload_url
+        $upload_url = (Invoke-Restmethod -Uri https://api.github.com/repos/qurious-pixel/vita3k-compatibility/releases/latest -Headers $headers).upload_url
         "upload_url is $upload_url"
         Add-Content -Path $env:GITHUB_ENV -Value "upload_url=$upload_url"
 

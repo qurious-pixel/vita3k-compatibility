@@ -5,6 +5,7 @@ on:
 
 jobs:
   update_compat_db:
+    permissions: write-all
     runs-on: windows-latest
 
     steps:

@@ -13,7 +13,7 @@ jobs:
         $headers = @{
             Authorization = "Token ${{ secrets.GITHUB_TOKEN }}"
         }
-        $compat_link = "https://api.github.com/repos/qurious-pixel/vita3k-compatibility"
+        $compat_link = "https://api.github.com/repos/Vita3K/compatibility"
         $issues_link = $compat_link + "/issues"
         $date = (Invoke-RestMethod -Uri $issues_link"?sort=updated" -Headers $headers)[0].updated_at
         $open_issues_count = (Invoke-RestMethod -Uri "$compat_link" -Headers $headers).open_issues_count

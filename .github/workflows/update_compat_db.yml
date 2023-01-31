@@ -59,7 +59,7 @@ jobs:
         
         $upload_url = (Invoke-Restmethod -Uri https://api.github.com/repos/Vita3K/compatibility/releases/latest -Headers $headers).upload_url
         "upload_url is $upload_url"
-        "upload_url=$upload_url" >> $GITHUB_ENV
+        Add-Content -Path $env:GITHUB_ENV -Value "upload_url=$upload_url"
 
     - name: Debug env variable
       run: |

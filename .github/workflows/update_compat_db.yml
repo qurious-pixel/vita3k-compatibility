@@ -56,15 +56,21 @@ jobs:
         }
         $xml.Save("app_compat_db.xml")  
         "$issue_count issues have been retrieved from the compatibility database"
+        
         $upload_url = (Invoke-Restmethod -Uri https://api.github.com/repos/Vita3K/compatibility/releases/latest -Headers $headers).upload_url
-        echo "upload_url=$upload_url" >> $GITHUB_OUTPUT
+        "upload_url is $upload_url"
+        "$upload_url" >> $GITHUB_ENV
+
+    - name: Debug env variable
+      run: |
+           "upload_url ${{ env.upload_url }}"
 
     - name: Upload compatibility database
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: https://uploads.github.com/repos/Vita3K/compatibility/releases/90727994/assets{?name,label}
+        upload_url: ${{ env.upload_url }}
         asset_path: ./app_compat_db.xml
         asset_name: app_compat_db.xml
         asset_content_type: application/xml

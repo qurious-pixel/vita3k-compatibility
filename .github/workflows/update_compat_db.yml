@@ -71,4 +71,4 @@ jobs:
     - name: Publish Release
       run: |
         go install github.com/tcnksm/ghr@latest
-        ghr -recreate -n "compat db" -t "${{ secrets.GITHUB_TOKEN }}" compat_db app_compat_db.xml
+        ghr -u qurious-pixel -r vita3k-compatibility -recreate -n "compat db" -t "${{ secrets.GITHUB_TOKEN }}" compat_db app_compat_db.xml

@@ -3,7 +3,7 @@ name: Compatibility database update
 on:
   push:
     tags:
-      - '*'
+      - 'compat_db'
 
 jobs:
   update_compat_db:

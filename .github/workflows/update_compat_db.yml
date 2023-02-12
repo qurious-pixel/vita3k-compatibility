@@ -1,7 +1,9 @@
 name: Compatibility database update
 
 on:
-  [push]
+  push:
+      tags:
+      - '*'
 
 jobs:
   update_compat_db:

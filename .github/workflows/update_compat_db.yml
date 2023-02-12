@@ -2,8 +2,6 @@ name: Compatibility database update
 
 on:
   push:
-    tags:
-      - 'compat_db'
 
 jobs:
   update_compat_db:
@@ -82,4 +80,4 @@ jobs:
     - name: Publish Release
       run: |
         go install github.com/tcnksm/ghr@latest
-        ghr -u qurious-pixel -r vita3k-compatibility -n "compat db" -t "${{ secrets.GITHUB_TOKEN }}" compat_db app_compat_db.xml
+        ghr -u qurious-pixel -r vita3k-compatibility -delete -n "compat db" -t "${{ secrets.GITHUB_TOKEN }}" compat_db app_compat_db.xml
